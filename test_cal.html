@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Calendar</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.css">
+
+    <style>
+        .flex-grid {
+            margin-left: 50px;
+        }
+
+
+        .box {
+            width: 200px;
+            height: 60px;
+            border: 1px solid lightgrey;
+            border-top: none;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 1.1em;
+        }
+
+
+        .first > .box {
+            border-top: 1px solid lightgrey;
+        }
+
+        .header-box {
+            width: 200px;
+            text-align: center;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .time {
+            color: grey;
+            position: absolute;
+            left:-50px;
+            top:-8px;
+            font-size: 0.8em;
+        }
+
+        .time-last {
+            top: 50px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div style="margin-left:50px;float:left">
+    <div class="row">
+        <div class="header-box">Monday</div>
+        <div class="header-box">Tuesday</div>
+        <div class="header-box">Wednesday</div>
+        <div class="header-box">Thursday</div>
+        <div class="header-box">Friday</div>
+    </div>
+
+
+    <div class="row first">
+        <div class="box monday"><span class="time">6:00AM</span></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">7:00AM</span></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">8:00AM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row">
+
+        <div class="box monday"><span class="time">9:00AM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">10:00AM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">11:00AM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+
+    <div class="row">
+        <div class="box monday"><span class="time">12:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+
+    <div class="row">
+        <div class="box monday"><span class="time">1:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+
+    <div class="row">
+        <div class="box monday"><span class="time">2:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+
+    <div class="row">
+        <div class="box monday"><span class="time">3:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+
+    <div class="row">
+        <div class="box monday"><span class="time">4:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">5:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row">
+        <div class="box monday"><span class="time">6:00PM</span></div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+    </div>
+    <div class="row last">
+        <div class="box monday"><span class="time">7:00PM</span>        <span class="time time-last">8:00PM</span>
+        </div>
+        <div class="box tuesday"></div>
+        <div class="box wednesday"></div>
+        <div class="box thursday"></div>
+        <div class="box friday"></div>
+
+    </div>
+
+
+</div>
+
+
+<div style="float:left;margin-left: 20px;">
+    <h1>Viewing schedule <span id="index">0</span> of <span id="count"></span></h1>
+
+    <button onclick="prev()" class="ui button">Prev</button>
+    <button onclick="next()" class="ui button">Next</button>
+    <button onclick="play()" class="ui button">Play</button>
+
+
+    <h2>Stats</h2>
+
+    <pre class="code" id="stats">
+        Hello world
+    </pre>
+</div>
+
+<script type="text/javascript" src="data2.js"></script>
+<script>
+
+
+
+
+    let inserted_nodes = [];
+    let current_index = 0;
+    let color_index = 0;
+    let colors = ["#3F51B5", "#009688", "#E65100", "#E91E63"]
+
+
+    function insert_css(css) {
+        let style_tag = document.createElement("style");
+        style_tag.type = "text/css";
+        style_tag.appendChild(document.createTextNode(css))
+        inserted_nodes.push(document.getElementsByTagName("head")[0].appendChild(style_tag));
+    }
+    function clear() {
+
+        color_index = 0;
+        for (let i = 0; i < inserted_nodes.length; i++) {
+            inserted_nodes[i].remove();
+        }
+        inserted_nodes = [];
+    }
+
+
+    // Monday Tuesday Wednay = 1,2,3,4...
+    function insert_time_and_day(hour, day_index, minutes, name) {
+        console.log("itad called with", hour, day_index, minutes, name);
+        console.assert(hour >= 6 && hour <  20);
+        let child_index = hour - 4;
+
+
+        let percent_taken = Math.min(minutes, 60) / 60;
+        let percent_empty_end = 1 - percent_taken;
+
+        console.log(percent_taken * 100, percent_empty_end * 100);
+
+
+        let color = colors[color_index];
+
+        let css = `.row:nth-child(${child_index}) > .box:nth-child(${day_index}) {
+            background: linear-gradient(0deg, #ffffff ${percent_empty_end * 100}%, ${color} ${percent_empty_end * 100}%);
+        };
+        `;
+
+        let css2 = `.row:nth-child(${child_index}) > .box:nth-child(${day_index}):before {
+            content: "${name}";
+        };`
+
+        insert_css(css);
+        insert_css(css2);
+        if (minutes > 60) {
+            let remaining = minutes - 60;
+            insert_time_and_day(hour+1, day_index, remaining, "");
+        }
+    }
+
+
+    function load_schedule(schedule) {
+        console.log("Loading...", schedule);
+
+
+        let stats = schedule.stats;
+        stats["score"] = schedule.score;
+        document.getElementById("stats").innerText = JSON.stringify(stats, null, 5);
+        let score = schedule.score;
+        let classes = schedule.classes;
+
+        for (let i = 0; i < classes.length; i++) {
+            let this_class_name = classes[i].name;
+            for (let j = 0; j < classes[i].times.length; j++) {
+                let this_time = classes[i].times[j];
+
+                insert_time_and_day(this_time.hour, this_time.day, this_time.length, this_class_name);
+            }
+            color_index += 1;
+
+        }
+
+
+    }
+
+
+    function update() {
+        clear();
+        load_schedule(schedules.schedules[current_index]);
+        document.getElementById("index").innerText = "" + current_index;
+
+    }
+
+    function next() {
+        current_index += 1;
+        update();
+    }
+
+    function prev() {
+        current_index -= 1;
+        update()
+
+    }
+
+
+    function init() {
+        current_index = 0;
+        update()
+        document.getElementById("count").innerText = "" + schedules.schedules.length;
+    }
+
+    function play() {
+        setInterval(() => {
+
+            current_index += 1;
+            update();
+        }, 100);
+    }
+
+    init();
+
+
+
+
+
+
+</script>
+</body>
+</html>

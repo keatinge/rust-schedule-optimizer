@@ -1,0 +1,8 @@
+[package]
+name = "sched"
+version = "0.1.0"
+authors = ["keatinge <willy.keatinge@gmail.com>"]
+
+[dependencies]
+select="0.4.2"
+serde_json="*"
